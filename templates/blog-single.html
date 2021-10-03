@@ -1,0 +1,80 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+
+    <!-- END nav -->
+
+    <div class="hero-wrap hero-bread" style="background-image: url('{% static 'images/bg_1.jpg' %}');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Tin tức</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <h2 class="mb-3 text-center">{{blogcontent.title}}</h2> 
+          <div class="col-lg-8 ftco-animate">
+            <p style="text-align: justify;">{{blogcontent.body}}</p>
+            <p class="text-center"><img src="{{baseURL}}/{{blogcontent.image}}" alt=""></p>
+            <p style="text-align: justify;">{{blogcontent.body_text}}</p>
+            <p class="text-center"><img src="{{baseURL}}/{{blogcontent.image_text}}" alt=""></p>
+            <p style="text-align: justify;">{{blogcontent.body_content}}</p>
+          </div> <!-- .col-md-8 -->
+          <div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box">
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <!-- <span class="icon ion-ios-search"></span>
+                  <input type="text" class="form-control" placeholder="Search..."> -->
+                </div>
+              </form>
+            </div>
+            <div class="sidebar-box ftco-animate">
+              <h3 class="heading">Bài viết mới</h3>
+              {% for blogcontenta in blogcontenta %}
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4"  style="background-image: url('{{baseURL}}/{{blogcontenta.image}}');"> </a>
+                <div class="text">
+                  <h3 class="heading-1"><a href="{% url 'blogsingle' blogcontenta.id %}">{{blogcontenta.title}}</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> {{blogcontenta.date|date:"d/m/yy"}}</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+            <!-- <div class="sidebar-box ftco-animate">
+              <h3 class="heading">Tag Cloud</h3>
+              <div class="tagcloud">
+                <a href="#" class="tag-cloud-link">fruits</a>
+                <a href="#" class="tag-cloud-link">tomatoe</a>
+                <a href="#" class="tag-cloud-link">mango</a>
+                <a href="#" class="tag-cloud-link">apple</a>
+                <a href="#" class="tag-cloud-link">carrots</a>
+                <a href="#" class="tag-cloud-link">orange</a>
+                <a href="#" class="tag-cloud-link">pepper</a>
+                <a href="#" class="tag-cloud-link">eggplant</a>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+       
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  {% endblock content %}

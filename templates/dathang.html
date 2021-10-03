@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nông sản sạch</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+  <div class="container">
+    <div id="wrapper" class="toggled">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+          <ul class="sidebar-nav">
+              <li>
+                <a class="unback" href="{% url 'index' %}">Quay lại trang chủ</a>
+              </li>
+              <li>
+                  Các mục bài viết
+              </li>
+              <li>
+                  <a href="{% url 'help' %}">Làm thế nào để đặt hàng trên hệ thống?</a>
+              </li>
+              <li>
+                  <a href="">Làm sao để tôi đặt nhiều sản phẩm vào cùng một đơn hàng?</a>
+              </li>
+              <li>
+                <a href="{% url 'helphuy' %}">Làm cách nào để tôi hủy đơn hàng?</a>
+              </li>
+              
+          </ul>
+      </div>
+      <!-- /#sidebar-wrapper -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+          <div class="help-content">
+              <h1>Làm thế nào để đặt hàng trên hệ thống?</h1>
+              <p>Quý khách có thể đặt các sản phẩm khác nhau trong 1 giỏ hàng thành 1 đơn hàng, các sản phẩm
+                   trong giỏ hàng sẽ được đóng thành 1 kiện hàng
+                  và giao đến địa chỉ quý khách đã đăng ký.
+                </p>
+                <p>Khi đã thao tác bỏ sản phẩm đầu tiên vào đơn hàng, quý khách vui lòng thực hiện
+                     các bước sau để thêm các sản phẩm khác vào giỏ hàng:</p>
+                <ol>
+                    <li>Chọn vào logo để trở về trang chủ hoặc gõ tìm kiếm sản phẩm trên thanh công cụ</li>
+                    <li>Thêm sản phẩm vào giỏ hàng bằng các chọn số lượng và “Chọn mua”..</li>
+                </ol>
+                <p><em>*Quá trình này có thể lặp lại cho đến khi quý khách hoàn tất việc bỏ tất cả
+                     các sản phẩm cần đặt mua vào giỏ hàng.*</em></p>
+                     <ol start="3">
+                        <li> Điều chỉnh số lượng và cập nhật giỏ hàng.</li>
+                        <li>Bấm “Tiến hành đặt hàng” để bắt đầu đặt hàng.</li>
+                </ol>
+                <p>
+                  <img src="{% static 'images/giohang3.jpg' %}"alt="">
+                </p>
+                <p>Vui lòng tham khảo thông tin chi tiết đặt hàng tại: <a href="{% url 'help' %}">đây</a></p>
+                      <hr>
+                      <p>Có thêm câu hỏi?</p>
+                      <p><a href="{% url 'contact' %}">Gửi yêu cầu tại đây</a></p>
+          </div>
+      </div>
+      <!-- /#page-content-wrapper -->
+
+  </div>
+  </div>
+    
+    <!-- /#wrapper -->
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+  
+</body>
+</html>

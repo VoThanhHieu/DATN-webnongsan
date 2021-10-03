@@ -1,0 +1,50 @@
+{% extends 'store/main_profile.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+<section class="ftco-section" style="padding: 0;">
+    <div class="container">
+      <div class="card">
+            <div class="card-body">
+              <form action="">
+                <div class="form-group row">
+                    <div class="col-12 text-center">
+                        <img class="rounded-circle" src="{{profile.image.url}}" alt="" width="200" height="200">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="name" class="col-5 col-form-label">Tên người dùng:</label> 
+                    <div class="col-7">
+                        <p>{{user.last_name}} {{user.first_name}}</p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="name" class="col-5 col-form-label">Email:</label> 
+                    <div class="col-7">
+                        <p>{{profile.user.email}}</p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="name" class="col-5 col-form-label">Điện thoại:</label> 
+                    <div class="col-7">
+                        <p>{{profile.phone}}</p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="name" class="col-5 col-form-label">Địa chỉ:</label> 
+                    <div class="col-7">
+                        <p>{{profile.address}}, {{profile.ward}}, {{profile.country}}, {{profile.city}}</p>
+                    </div>
+                  </div>
+              </form>
+          </div>
+            <!-- END -->
+      </div>    
+    </div> 
+    </div>
+  </section> <!-- .section -->
+
+
+</hr>
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+{% endblock content %}

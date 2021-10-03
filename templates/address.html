@@ -1,0 +1,52 @@
+{% extends 'store/main_profile.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+    <article class="card">
+        <header class="card-header"> Theo dõi đơn hàng </header>
+        <div class="card-body">
+            <h6>Mã đơn hàng</h6>
+            <article class="card">
+                <div class="card-body row">
+                    <div class="col"> <strong>Thời gian giao dự kiến: </strong> <br>28/9/2020 </div>
+                    <div class="col"> <strong>Vận chuyển</strong> <br> GH Tiết kiệm </div>
+                    <div class="col"> <strong>Tình trạng:</strong> <br> Được chuyển phát nhanh </div>
+                </div>
+            </article>
+            <div class="track">
+                <div class="step active"><span class="icon"><i class="fa fa-check"></i></span><span class="text">Đặt hàng thành công</span></div>
+                <div class="step active"><span class="icon"><i class="fa fa-user"></i></span><span class="text"> Hệ thống tiếp nhận</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-truck"></i> </span> <span class="text"> Đang lấy hàng </span></div>
+                <div class="step"><span class="icon"><i class="fa fa-archive" aria-hidden="true"></i></span> <span class="text">Đóng gói xong</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-car" aria-hidden="true"></i></span> <span class="text">Đang vận chuyển</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-check-circle" aria-hidden="true"></i></span> <span class="text">Giao hàng thành công</span></div>
+            </div>
+            <hr>
+            <hr>
+            <a href="#" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Quay lại đơn hàng</a>
+        </div>
+    </article>
+
+
+<script>
+    
+    // $("table tr td:nth-child(4)").each(function() { 
+    //     if( document.getElementById('status').nodeValue =="Đã Hủy"){
+    //         document.getElementById('huy').style.display = 'none';
+    //     }
+    //     else
+    //     document.getElementById('huy').style.display = 'none';
+    // }); 
+    
+    // $('#status').each(function(){        
+    //     var x = document.getElementById('status'); 
+    //     if( $(this).text == "Đã Hủy"){
+    //         document.getElementById('huy').style.display = 'none';
+    //     }
+    //     else
+    //     document.getElementById('huy').style.display = 'none';
+    // });
+
+</script>
+
+{% endblock content %}

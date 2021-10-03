@@ -1,0 +1,172 @@
+{% extends 'store/main_profile.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+
+    <!-- END nav -->
+
+    <section class="ftco-section" style="padding: 0;">
+		{% if form.errors %}
+		<!-- Error messaging -->
+		<div id="errors">
+			<div class="inner">
+				<p>There were some errors in the information you entered. Please correct the following:</p>
+				{{ form.non_field_errors }}
+				<ul>
+					{% for field in form %}
+						{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<!-- /Error messaging -->
+	{% endif %}
+        <!-- <div class="row justify-content-center"> -->
+          	<!-- <div class="col-xl-7 ftco-animate"> -->
+				  <h4>Thông tin tài khoản</h4>
+				<div class="card mb-5">
+					<div class="card-body">
+				<form action="" enctype="multipart/form-data" method="POST" id="UserForm" data-cities-url="{% url 'ajax_load_cities' %}" data-district-url="{% url 'ajax_load_district' %}" novalidate class="billing-form" >
+					{% csrf_token %}
+						<div class="form-group row">
+							<div class="col-12 text-center">
+								<img class="rounded-circle" src="{{profile.image.url}}" alt="" width="200" height="200">
+							</div>
+						  </div>
+						<div class="form-group row">
+							<label for="name" class="col-4 col-form-label">Tên khách hàng</label> 
+							<div class="col-8">
+							<input type="text" class="form-control" name="first_name" placeholder="" value="{{ user.first_name}}" required>
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label for="lastname" class="col-4 col-form-label">Họ</label> 
+							<div class="col-8">
+							  <input name="last_name" placeholder="" value="{{user.last_name}}" class="form-control here" type="text" required>
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label for="phone" class="col-4 col-form-label">Số điện thoại</label> 
+							<div class="col-8">
+								<input type="tel" value="{{profile.phone}}" class="form-control here" name="phone" placeholder="123-45-678" pattern="[0-9]{4}[0-9]{3}[0-9]{3}" required>
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label for="website" class="col-4 col-form-label">Số nhà, đường</label> 
+							<div class="col-8">
+							  <input name="address" placeholder="Số nhà, đường" value="{{profile.address}}" class="form-control here" type="text" required="true">
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label for="select" class="col-4 col-form-label">Thành phố</label> 
+							<div class="col-8">
+								<select  class="custom-select" id="city"  name="city" onChange="urlDirect()">	
+									<option value="{{profile.city.id}}">{{profile.city}}</option>									
+									{% for city in city%}																											
+										<option value="{{city.id}}">{{city.name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label for="select" class="col-4 col-form-label">Quận huyện</label> 
+							<div class="col-8">
+								<select class="custom-select" id="district" name="country" onChange="ChangeDistrict()">
+									<option value="{{profile.country.id}}">{{profile.country}}</option>									
+								</select>
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label for="select" class="col-4 col-form-label">Xã phường</label> 
+							<div class="col-8">
+								<select class="custom-select" id="ward" name="ward" onChange="Changeward()">
+									<option value="{{profile.ward.id}}">{{profile.ward}}</option>									
+								</select>
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label for="select" class="col-4 col-form-label">Cập nhật ảnh</label> 
+							<div class="col-8">
+								<!-- <input type="file"  name="image" accept="image/*" class="custom-file-input" id="id_image">
+								<label class="custom-file-label" for="inputGroupFile01">Choose file</label> -->
+								<input type="file" id="id_image" name="image" accept="image/*" >
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<div class="offset-4 col-8">
+							  <button type="submit" class="btn btn-primary">Thay đổi thông tin</button>
+							</div>
+						  </div>
+				</form>
+			</div>
+		</div>
+	 
+      <!-- </div> -->
+    </section> <!-- .section -->
+
+
+  </hr>
+ 
+
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	function urlDirect(){
+		var select = document.getElementById('city');
+		var str =  select.options[str.selectedIndex].text;
+		
+		select.addEventListener('change', function(){
+			select.option[select.selectedIndex].setAttribute('selected')			
+		});		
+	}
+
+	function ChangeDistrict(){
+		var select = document.getElementById('district');
+		select.addEventListener('change', function(){
+			select.option[select.selectedIndex].setAttribute('selected')
+		});
+	}
+
+	function Changeward(){
+		var select = document.getElementById('ward');
+		select.addEventListener('change', function(){
+			select.option[select.selectedIndex].setAttribute('selected')
+		});
+	}
+
+	$("#city").change(function(){
+		var url =$("#UserForm").attr("data-cities-url");
+		var cityId = $(this).val();
+		$.ajax({                      
+			url: url,                  
+			data: {
+			'city': cityId      
+			},
+			success: function (data) {   
+			$("#district").html(data);  
+			}
+		});
+	});
+
+	$("#district").change(function(){
+		var url =$("#UserForm").attr("data-district-url");
+		var cityId = $(this).val();
+		$.ajax({                      
+			url: url,                  
+			data: {
+			'district': cityId      
+			},
+			success: function (data) {   
+			$("#ward").html(data);  
+			}
+		});
+	});
+
+	document.getElementById("id_image").value.split("\\").pop();
+</script>
+
+{% endblock content %}

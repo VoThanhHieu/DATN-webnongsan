@@ -1,0 +1,269 @@
+
+  {% extends 'store/main.html' %}
+  {% load static %}
+  {% block content %}
+    <!-- END nav -->
+    <section id="home-section" class="hero">
+		  <div class="home-slider owl-carousel">
+	      <div class="slider-item" style="background-image: url(' {%static 'images/bg_1.jpg' %}');">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+	            <div class="col-md-12 ftco-animate text-center">
+	              <h1 class="mb-2">Ăn sạch, sống khỏe</h1>
+	              <h2 class="subheading mb-4">Sự lựa chọn dành đến cho khách hàng</h2>
+	              <!-- <p><a href="shop.html" class="btn btn-primary">Xem chi tiết</a></p> -->
+	            </div>
+
+	          </div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item" style="background-image: url(' {%static 'images/banner1.jpg' %}');">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+	            <div class="col-sm-12 ftco-animate text-center">
+	              <h1 class="mb-2">Thực phẩm an toàn, dễ dàng lựa chọn</h1>
+	              <h2 class="subheading mb-4">Sản phẩm tốt dành cho khách hàng</h2>
+	              <!-- <p><a href="#" class="btn btn-primary">Xem chi tiết</a></p> -->
+	            </div>
+
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+    </section>
+
+    <section class="ftco-section">
+			<div class="container">
+				<div class="row no-gutters ftco-services">
+          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
+            		<span class="flaticon-shipped"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Miễn phí giao hàng</h3>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
+            		<span class="flaticon-diet"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Thực phẩm sạch</h3>
+              </div>
+            </div>    
+          </div>
+          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
+            		<span class="flaticon-award"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Chất lượng cao</h3>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
+            		<span class="flaticon-customer-service"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Hỗ trợ 24/7</h3>
+              </div>
+            </div>      
+          </div>
+        </div>
+			</div>
+		</section>
+
+		<section class="ftco-section ftco-category ftco-no-pt">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<div class="row">
+							<div class="col-md-6 order-md-last align-items-stretch d-flex">
+							<div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url('{% static 'images/category.jpg' %}');">
+									<div class="text text-center">
+										<h2>Nông sản sạch</h2>
+										<p>Bảo vệ sức khỏe của mọi nhà</p>
+										<p><a href="{% url 'shop' %}" class="btn btn-primary">Mua ngay</a></p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url('{% static 'images/category-1.jpg' %}');">
+									<div class="text px-3 py-1">
+										<h2 class="mb-0">Rau củ</h2>
+									</div>
+								</div>
+								<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('{% static 'images/category-2.jpg' %}');">
+									<div class="text px-3 py-1">
+										<h2 class="mb-0">Trái cây</h2>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url('{% static 'images/thittrung.jpg'%}');">
+							<div class="text px-3 py-1">
+								<h2 class="mb-0">Thịt trứng</h2>
+							</div>		
+						</div>
+						<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('{% static 'images/category-4.jpg' %}');">
+							<div class="text px-3 py-1">
+								<h2 class="mb-0">Trái cây sấy</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+    <section class="ftco-section">
+    	<div class="container">
+				<div class="row justify-content-center mb-3 pb-3">
+          <div class="col-md-12 heading-section text-center ftco-animate">
+			<h2 class="mb-4">Sản phẩm nổi bật</h2>
+			{% if messages %}
+				{% for message in messages %}
+					<div class = "alert alert-{{message.tags}}" role = "alert">
+						{{message}}
+					</div>
+				{% endfor %}
+			{% endif %}
+          </div>
+        </div>   		
+    	</div>
+    	<div class="container">
+    		<div class="row">	
+				{% for product in product %}			
+    			<div class="col-md-6 col-lg-3 ftco-animate">
+    				<div class="product">
+						<a href="{% url 'product' product.id %}" class="img-prod"><img class="img-fluid" src="{{baseURL}}/{{product.image}}" alt="Colorlib Template">
+							<span class="status">NEW</span>
+    						<div class="overlay"></div>
+    					</a>
+    					<div class="text py-3 pb-4 px-3 text-center">
+    						<h3><a href="{% url 'product' product.id %}">{{product.name}}</a></h3>
+    						<div class="d-flex">
+    							<div class="pricing">
+		    						<p class="price"><span class="mr-2 price-dc"></span><span class="price-sale">{{product.price}}đ</span></p>
+		    					</div>
+	    					</div>
+	    					<div class="bottom-area d-flex px-3">
+	    						<div class="m-auto d-flex">
+	    							<a href="/order/addtoshopcart/{{ product.id }}" class="buy-now d-flex justify-content-center align-items-center mx-1">
+	    								<span><i class="ion-ios-cart"></i></span>
+	    							</a>
+    							</div>
+    						</div>
+						</div>
+					</div>
+					
+				</div>
+    			{% endfor %}
+			</div>
+			
+				<div class="pagination justify-content-center">
+					{% if product.has_previous %}
+						<a class="pagination-action" href="?page=1">
+							<i class="fa fa-chevron-circle-left" aria-hidden="true"></i><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+						</a>
+						<a class="pagination-action" href="?page={{ product.previous_page_number }}">
+							<i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+						</a>
+					{% endif %}
+					{% for num in product.paginator.page_range %}
+						{% if product.number == num %}
+						<span class="pagination-number pagination-current">{{ num }}</span>
+					{% elif num > product.number|add:'-3' and num < product.number|add:'3' %}
+							<a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+						{% endif %}
+					{% endfor %}
+					{% if product.has_next %}
+	
+						<a class="pagination-action"  href="?page={{ product.next_page_number }}">
+							<i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+						</a>
+						<a class="pagination-action" href="?page={{ product.paginator.num_pages }}">
+							<i class="fa fa-chevron-circle-right" aria-hidden="true"></i><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+						</a>
+					{% endif %}
+				</div>
+			
+    	</div>
+    </section>
+		
+		<section class="ftco-section img" style="background-image: url('{% static 'images/bg_3.jpg' %}');">
+    	<div class="container">
+				<div class="row justify-content-end">
+          <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
+          	<span class="subheading">Giá tốt nhất cho bạn</span>
+			<h2 class="mb-4">Giao hàng trong ngày</h2>
+			<div id="timer" class="d-flex mt-5">
+				<!-- <div class="time" id="days"></div> -->
+				<div class="time pl-3" id="hours"></div>
+				<div class="time pl-3" id="minutes"></div>
+				<div class="time pl-3" id="seconds"></div>	
+			  </div>
+			  <h2>Lượt truy cập:</h2>
+			  <p><h4>Tổng cộng: <span class="text-primary">{{c}}</span></h4></p>
+          </div>
+        </div>   		
+    	</div>
+    </section>
+
+    <hr>
+		
+	<section class="ftco-section testimony-section">
+		<div class="container">
+		  <div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-7 heading-section ftco-animate text-center">
+			  <h2 class="mb-4">Tin tức mới nhất</h2>
+			</div>
+		  </div>
+		  <div class="row ftco-animate">
+			
+			<div class="col-md-12">
+			  <div class="carousel-testimony owl-carousel">
+				{% for blogcontent in blogcontent %}
+				<div class="item">
+				  <div class="testimony-wrap p-4 pb-5">
+					<div class="user-img mb-5" style="background-image: url('{{baseURL}}/{{blogcontent.image}}');">
+					  <span class="quote d-flex align-items-center justify-content-center">
+						<i class="icon-quote-left"></i>
+					  </span>
+					</div>
+					<div class="text text-left">
+					<p class="name text-lg-center"><a href="{% url 'blogsingle' blogcontent.id %}">{{ blogcontent.title }}</a></p>
+					<p class="mb-5 pl-4 line">{{ blogcontent.snippet }}</p>
+					</div>
+				  </div>
+				</div>
+				{% endfor %}
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+
+
+	
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+	  <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+	  <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
+	</svg></div>
+	
+  {% endblock content %}

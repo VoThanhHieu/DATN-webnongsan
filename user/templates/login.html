@@ -1,0 +1,63 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+
+	
+
+	<section>
+		<div class="block remove-bottom bg-primary">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="account-popup-area signin-popup-box static">
+							{% if messages %}
+							{% for message in messages %}
+								<div class = "alert alert-{{message.tags}}" role = "alert">
+									{{message}}
+								</div>
+							{% endfor %}
+							{% endif %}
+							<div class="account-popup mt-5">
+								<h3> ĐĂNG NHẬP </h3>
+								<form method="POST">
+									{% csrf_token %}
+									<div class="cfield">
+										<input type="text" name="username" placeholder="Tên đăng nhập" />
+										<i class="fa fa-user"></i>
+									</div>
+									<div class="cfield">
+										<input type="password" name="password" placeholder="Mật khẩu" />
+										<i class="fa fa-unlock-alt"></i>
+									</div>
+									<p class="remember-label">
+									</p>
+									<a href="{% url 'password_reset' %}" title="">Quên mật khẩu</a>
+									<input class="aco-login" type="submit" value="Đăng nhập">
+								</form>
+								<div class="extra-login">
+									<span>hoặc</span>
+									<div class="login-social">
+										<a class="fb-login" href="#" title=""><i class="fa fa-facebook"></i></a>
+										<a class="tw-login" href="#" title=""><i style="color: red;" class="fa fa-google"></i></a>
+									</div>
+									
+								</div>
+							</div>
+						</div><!-- LOGIN POPUP -->
+					</div>
+				</div>
+			</div>
+		</div>
+		{% if messages %}
+        {% for message in messages %}
+            <div class = "alert alert-{{message.tags}}" role = "alert">
+                {{message}}
+            </div>
+        {% endfor %}
+        {% endif %}
+	</section>
+	
+
+
+	{% endblock content %}

@@ -1,0 +1,185 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+
+    <!-- END nav -->
+
+    <div class="hero-wrap hero-bread" style="background-image: url('{% static 'images/bg_1.jpg' %}');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Thanh toán</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section">
+      <div class="container">
+		{% if form.errors %}
+		<!-- Error messaging -->
+		<div id="errors">
+			<div class="inner">
+				<p>There were some errors in the information you entered. Please correct the following:</p>
+				{{ form.non_field_errors }}
+				<ul>
+					{% for field in form %}
+						{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<!-- /Error messaging -->
+	{% endif %}
+        <div class="row justify-content-center">
+          	<div class="col-xl-12 ftco-animate">
+				<form action="" method="POST" id="OrderForm" data-cities-url="{% url 'ajax_load_cities' %}" data-district-url="{% url 'ajax_load_district' %}" novalidate class="billing-form">
+					{% csrf_token %}
+					<h3 class="mb-4 billing-heading">Chi tiết đặt hàng</h3>
+					<div class="row align-items-end">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="ten">Tên Khách Hàng <span class="content-textel">*</span></label>
+								<input type="text" class="form-control" name="first_name" placeholder="" value="{{ user.first_name}}" required="true">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="phone">Họ <span class="content-textel">*</span> </label>
+								<input type="text" class="form-control" name="last_name" placeholder="" value="{{user.last_name}}" required="true">
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-12"></div>								
+						<div class="w-100"></div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="phone">Số điện thoại <span class="content-textel">*</span></label>
+								<input type="text" class="form-control" name="phone" placeholder="" value="{{profile.phone}}">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="streetaddress">Địa chỉ <span class="content-textel">*</span></label>
+								<input type="text" class="form-control" name="address" placeholder="Vui lòng nhập đầy đủ địa chỉ giao hàng" value="{{profile.address}}">
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="tinh">Tỉnh thành <span class="content-textel">*</span></label>
+								<!-- <input type="text" class="form-control" name="city" placeholder="" value="{{profile.city}}"> -->
+								<select  class="custom-select" id="city" name="city" onChange="urlDirect()">
+									<!-- <option >Chọn thành phố</option> -->
+									<option value="{{profile.city.id}}">{{profile.city}}</option>
+									{% for city in city %}																											
+										<option value="{{city.id}}">{{city.name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="email">Quận Huyện<span class="content-textel">*</span></label>
+								<!-- <input type="text" class="form-control" name="country" placeholder="" value="{{profile.country}}"> -->
+								<select class="custom-select" id="district" name="country" onChange="ChangeDistrict()">
+									<!-- <option>Chọn quận, huyện</option> -->
+									<option value="{{profile.country.id}}">{{profile.country}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="phuong">Xã phường <span class="content-textel">*</span></label> 								
+								<select class="custom-select" id="ward" name="ward" onChange="Changeward()">
+									<!-- <option>Chọn phường, xã</option>									 -->
+									<option value="{{profile.ward.id}}">{{profile.ward}}</option>
+								</select>
+							</div>
+						</div>
+						
+						
+						<div class="col-md-6"></div>
+						<div class="col-md-6"></div>
+							<div class="col-md-6">
+								<div class="cart-detail cart-total p-3 p-md-4 bg-light">
+									<p class="d-flex total-price">
+										<span>Tổng cộng</span>
+										<span>{{total}}đ</span>
+										<p>(Thanh toán tiền mặt khi nhận hàng)</p>
+									</p>
+								</div>
+									<p><button type="submit" class="checkout-product">Xác nhận đặt hàng</button></p>
+							</div>
+
+						
+				</form>
+	        </div>
+	          <!-- END -->
+		</div>    
+	  </div>
+      </div>
+    </section> <!-- .section -->
+
+
+  </hr>
+ 
+
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	function urlDirect(){
+		var select = document.getElementById('city');
+		select.addEventListener('change', function(){
+			select.option[select.selectedIndex].setAttribute('selected')
+		});
+	}
+
+	function ChangeDistrict(){
+		var select = document.getElementById('district');
+		select.addEventListener('change', function(){
+			select.option[select.selectedIndex].setAttribute('selected')
+		});
+	}
+
+	function Changeward(){
+		var select = document.getElementById('ward');
+		select.addEventListener('change', function(){
+			select.option[select.selectedIndex].setAttribute('selected')
+		});
+	}
+
+	$("#city").change(function(){
+		var url =$("#OrderForm").attr("data-cities-url");
+		var cityId = $(this).val();
+		$.ajax({                      
+			url: url,                  
+			data: {
+			'city': cityId      
+			},
+			success: function (data) {   
+			$("#district").html(data);  
+			}
+		});
+	});
+	$("#district").change(function(){
+		var url =$("#OrderForm").attr("data-district-url");
+		var cityId = $(this).val();
+		$.ajax({                      
+			url: url,                  
+			data: {
+			'district': cityId      
+			},
+			success: function (data) {   
+			$("#ward").html(data);  
+			}
+		});
+	});
+</script>
+
+  {% endblock content %}

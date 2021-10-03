@@ -1,0 +1,67 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+
+    <!-- END nav -->
+
+    <!-- <div class="hero-wrap hero-bread" style="background-image: url('{% static 'images/bg_1.jpg' %}');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Sản phẩm</h1>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <h1>
+        
+		{{product.name}}
+		{{product.price}}
+    </h1>
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center">
+    			<div class="col-md-10 mb-5 text-center ">
+					<h2 class="text-primary">KẾT QUẢ TÌM KIẾM: </h2>
+    			</div>
+			</div>
+    		<div class="row">
+				{% for product in product %}	
+    			<div class="col-md-6 col-lg-3 ftco-animate">
+    				<div class="product">
+						<a href="{% url 'product' product.id %}" class="img-prod"><img class="img-fluid" src="{{baseURL}}/{{product.image}}" alt="Colorlib Template">
+							<span class="status">NEW</span>
+    						<div class="overlay"></div>
+    					</a>
+    					<div class="text py-3 pb-4 px-3 text-center">
+    						<h3><a href="{% url 'product' product.id %}">{{product.name}}</a></h3>
+    						<div class="d-flex">
+    							<div class="pricing">
+		    						<p class="price"><span class="mr-2 price-dc"></span><span class="price-sale">{{product.price}}đ</span></p>
+		    					</div>
+	    					</div>
+	    					<div class="bottom-area d-flex px-3">
+	    						<div class="m-auto d-flex">
+	    							<a href="/order/addtoshopcart/{{ product.id }}" class="buy-now d-flex justify-content-center align-items-center mx-1">
+	    								<span><i class="ion-ios-cart"></i></span>
+	    							</a>
+	    							</a>
+    							</div>
+    						</div>
+						</div>
+					</div>					
+				</div>
+				{% endfor %}
+    		</div>
+    	</div>
+    </section>
+		
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="30px" height="40px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  {% endblock content %}
+ 

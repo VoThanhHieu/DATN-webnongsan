@@ -1,0 +1,79 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+
+    <!-- END nav -->
+
+    <div class="hero-wrap hero-bread" style="background-image: url('{% static 'images/bg_1.jpg' %}');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Liên hệ</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section contact-section bg-light">
+      <div class="container">
+      	<div class="row d-flex mb-5 contact-info">
+          <div class="w-100"></div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Địa chỉ:</span> 140 Lê Trọng Tấn, Tây Thạnh , quận Tân Phú, TP. Hồ Chí Minh</p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Điện thoại:</span> +84 3899258</p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Email:xuantien0113@gmail.com</span></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Website:</span> <a style="color: gray;" href="{% url 'index' %}">nongsansach.com</a></p>
+	          </div>
+          </div>
+        </div>
+        
+        {% if messages %}
+								{% for message in messages %}
+									<div style="color: #d43f3a; font-size: medium">
+										{{ message}}
+									</div>
+								{% endfor %}
+							{% endif %}
+        <div class="row block-9">
+          <div class="col-md-12 order-md-last d-flex">
+            <form action="{% url 'contact' %}" method = "POST" class="bg-white p-5 contact-form">
+              {% csrf_token %}
+              <label for="">NỘI DUNG LIÊN HỆ</label>
+              <div class="form-group">
+                <textarea name="message" id="" cols="30" rows="14" class="form-control" placeholder="Vui lòng nhập họ tên, địa chỉ, số điện thoại và nội dung"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Gửi" class="btn btn-primary py-3 px-5">
+              </div>
+              <p>
+                <i><span style="color: red;">***</span> Khách hàng gửi các yêu cầu về sản phẩm tại đây !!</i>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  {% endblock content %}

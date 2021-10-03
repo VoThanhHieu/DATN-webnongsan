@@ -1,0 +1,121 @@
+
+{% extends 'store/main_profile.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-12 col-md-offset-2">        
+                <class class="panel panel-default">        
+                        <form method="get">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"><labe>Ngày Bắt Đầu</labe></div>
+                                <div class="col-sm-3">
+                                    <div class="form-group" >
+                                        <div class="input-group date" data-date-format="mm/dd/yyyy" data-provide="datepicker" >
+                                            <input type="text" class="form-control" name="create_date__gte" id="id_create_date__gte">
+                                            <span class="input-group-addon">
+                                                <span class="input-group-text"><span class="fa fa-calendar"></span></span>
+                                            </span>   
+                                        </div>
+                                    </div>
+                                </div>                                
+                                <div class="col-sm-4 "></div>                                
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">
+                                    <labe>Ngày Kết Thúc</labe>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="input-group date" data-date-format="mm/dd/yyyy" data-provide="datepicker" >
+                                        <input type="text" class="form-control" name="create_date__lte" id="id_create_date__lte">
+                                        <span class="input-group-addon">
+                                            <span class="input-group-text"><span class="fa fa-calendar"></span></span>
+                                        </span> 
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>                                    
+                                </div>                                
+                            </div>  
+                            <div class="row mt-3">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">
+                                    <labe>Trạng Thái</labe>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">                                        
+                                        <select  class="custom-select" id="status"  name="status" onChange="urlDirect()">																			
+                                            <option value="">Tất Cả</option>
+                                            <option value="Mới">Mới</option>   
+                                            <option value="Đã Xác Nhận">Đã Xác Nhận</option>
+                                            <option value="Đang Vận Chuyển">Đang Vận Chuyển</option> 
+                                            <option value="Hoàn Thành">Hoàn Thành</option>
+                                            <option value="Đang Đóng Gói">Đang đóng gói</option>  
+                                            <option value="Đã Hủy">Đã Hủy</option> 
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4"></div>                                
+                            </div>  
+                            
+                                <!-- {{ filter.form.as_p}}                           
+                            <button type="submit" class="btn btn-primary">Tìm Kiếm</button>       -->
+                          </form>
+                    </class>         
+                    <div class="panel-body col-md-12 mt-5">
+                        <table class="table table-striped table-condensed">
+                            <thead class="thead-primary">
+                                <tr class="text-left" style="background: red !important; color: white !important;">                                
+                                    <th style="color: white !important;">STT</th>
+                                    <th style="color: white !important;">Mã đơn hàng</th>
+                                    <th style="color: white !important;">Thành tiền</th>
+                                    <th style="color: white !important;">Ngày</th>
+                                    <th style="color: white !important;">Trạng thái</th>
+                                </tr>
+                                </thead>
+                            <tbody> 
+                                {% for order in filter.qs %}             
+                                <tr>
+                                    <td class="text-center">{{ forloop.counter}}</td>
+                                    <td class="text-center">{{ order.code}}</td>
+                                    <td class="text-center totalprice">{{order.total}}</span></td>
+                                    <td class="text-center">{{order.create_date|date:"d/m/yy" }}</span></td>
+                                    <td class="text-center">{{order.status}}</span></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+                            <h4> <label style="color:#E74C3C" for="Total">Total :</label><span id="tong"></span></h4> 
+                        </div>        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'dd/mm/yyyy',
+            startDate: '-3d'
+        });
+        var sum = 0;
+        $('.totalprice').each(function(){
+            sum += parseFloat($(this).text()); 
+        });
+        document.getElementById("tong").innerHTML = sum;
+
+        function urlDirect(){
+		var select = document.getElementById('status');		
+		select.addEventListener('change', function(){
+			select.option[select.selectedIndex].setAttribute('selected')
+		});
+		
+	}
+</script>
+{% endblock content %}  

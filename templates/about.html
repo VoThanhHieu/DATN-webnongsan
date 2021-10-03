@@ -1,0 +1,102 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+
+    <!-- END nav -->
+
+    <div class="hero-wrap hero-bread" style="background-image: url('{% static 'images/bg_1.jpg' %}');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Giới thiệu</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(' {%static 'images/category.jpg' %}');">
+					</div>
+					<div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
+	          <div class="heading-section-bold mb-4 mt-md-5">
+	          	<div class="ml-md-0">
+		            <h2 class="mb-4">Xin chào quý khách hàng !</h2>
+	            </div>
+	          </div>
+	          <div class="pb-md-5">
+	          	<p>Website của chúng tôi là cửa hàng thực phẩm sạch chuyên cung cấp các mặt hàng rau củ quả, trái cây tươi, thực phẩm tươi sống
+                    cùng các loại gia vị phụ gia cho các hộ gia đình, nhà hàng, khách sạn, bệnh viện, trường học,
+                    bếp ăn công nghiệp trong TP. Hồ Chí Minh và các Tỉnh lân cận. Bên cạnh đó để đáp ứng nhu cầu thưởng thức hương
+                    vị quê hương của Quý khách hàng, chúng tôi còn cung cấp những đặc sản ngon, chất lượng, nổi tiếng nhất
+                    trên các vùng miền.</p>
+                  <p>Website của chúng tôi sẽ là nơi đáp ứng đầy đủ mọi nhu cầu của khách hàng về đa dạng sản phẩm, chất lượng và giá cả hợp lý.
+                      Ngoài ra chúng tôi sẽ luôn cố gắng nổ lực sáng tạo để không ngừng nâng cao chất lượng sản phẩm để đáp lại sự tin cậy của
+                      Quý khách hàng. Nhằm nâng cao chất lượng sản phẩm và chất lượng phục vụ ngày càng tốt hơn,
+                      và rất mong được sự ủng hộ và nhận ý kiến đóng góp từ phía Quý khách hàng.</p>
+                  <p>Rất mong nhận được sự quan tâm hợp tác của Quý khách hàng.</p>
+							<p><a href="#" class="btn btn-primary">Mua ngay</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+  <section class="ftco-section bg-white">
+      <div class="container">
+          <div class="row no-gutters ftco-services">
+              <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+                  <div class="media block-6 services mb-md-0 mb-4">
+                      <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
+                          <span class="flaticon-shipped"></span>
+                      </div>
+                      <div class="media-body">
+                          <h3 class="heading">Miễn phí giao hàng</h3>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+                  <div class="media block-6 services mb-md-0 mb-4">
+                      <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
+                          <span class="flaticon-diet"></span>
+                      </div>
+                      <div class="media-body">
+                          <h3 class="heading">Thực phẩm sạch</h3>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+                  <div class="media block-6 services mb-md-0 mb-4">
+                      <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
+                          <span class="flaticon-award"></span>
+                      </div>
+                      <div class="media-body">
+                          <h3 class="heading">Chất lượng cao</h3>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+                  <div class="media block-6 services mb-md-0 mb-4">
+                      <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
+                          <span class="flaticon-customer-service"></span>
+                      </div>
+                      <div class="media-body">
+                          <h3 class="heading">Hỗ trợ 24/7</h3>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+ 
+  
+
+  <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+    {% endblock content %}
+  

@@ -1,0 +1,168 @@
+{% extends 'store/main_profile.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+    
+      <h4>Chi tiết đơn hàng</h4>
+      <div class="kHWfJY">
+        <div class="ipnhKS">
+          <div class="title">Địa chỉ người nhận</div>
+          <div class="content">
+            <p class="name-content">{{order.last_name}} {{order.first_name}}</p>
+            <p class="adress-content"><span>Địa chỉ:</span> {{order.address}}, {{order.ward}}, {{order.country}}, {{order.city}}</p>
+            <p class="phone-content">{{order.phone}}</p>
+          </div>
+        </div>
+        <div class="ipnhKS">
+          <div class="title">Hình thức giao hàng</div>
+          <div class="content">
+            {% if order.status == 'Đã Hủy' %}
+             <p>Đơn hàng: <span style="color: red; font-weight: bold;">{{order.status}}</span></p>
+            {% else %}
+              {% if order.status == 'Hoàn Thành'%}
+              <p>Phí giao hàng: <span style="color: red;">15000đ</span></p>
+              <p>Giao hàng: {{order.shipper}}</p>
+                <p>Đơn hàng: <span style="color: #82ae46; font-weight: bold;">{{order.status}}</span></p>
+              {% else %}
+              <p>Phí giao hàng: <span style="color: red;">15000đ</span></p>
+              <p>Giao hàng: {{order.shipper}}</p>
+                <p>Giao muộn nhất vào ngày {{order.update_date|date:"d/m/yy"}}</p>
+              {% endif %}
+            {% endif %}
+        </div>
+      </div>
+        <div class="ipnhKS">
+          <div class="title">Hình thức thanh toán</div>
+          <div class="content">
+           <p>Thanh toán tiền mặt khi nhận hàng</p>
+        </div>
+        </div>
+      </div>
+      <article class="card">
+        <header class="card-header"> Theo dõi đơn hàng </header>
+        <div class="card-body">  
+          {% if order.status == 'Mới' %}          
+            <div class="track">
+                <div class="step active"><span class="icon"><i class="fa fa-check"></i></span><span class="text">Đặt hàng thành công</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-user"></i></span><span class="text"> Hệ thống tiếp nhận</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-archive" aria-hidden="true"></i></span> <span class="text">Đóng gói</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-car" aria-hidden="true"></i></span> <span class="text">Đang vận chuyển</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-check-circle" aria-hidden="true"></i></span> <span class="text">Giao hàng thành công</span></div>
+            </div>
+          {% else %}
+            {% if order.status == 'Đã Xác Nhận' %}
+              <div class="track">
+                <div class="step active"><span class="icon"><i class="fa fa-check"></i></span><span class="text">Đặt hàng thành công</span></div>
+                <div class="step active"><span class="icon"><i class="fa fa-user"></i></span><span class="text"> Hệ thống tiếp nhận</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-archive" aria-hidden="true"></i></span> <span class="text">Đóng gói</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-car" aria-hidden="true"></i></span> <span class="text">Đang vận chuyển</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-check-circle" aria-hidden="true"></i></span> <span class="text">Giao hàng thành công</span></div>
+              </div>
+          {% else %}
+            {% if order.status == 'Đang Đóng Gói' %}
+              <div class="track">
+                <div class="step active"><span class="icon"><i class="fa fa-check"></i></span><span class="text">Đặt hàng thành công</span></div>
+                <div class="step active"><span class="icon"><i class="fa fa-user"></i></span><span class="text"> Hệ thống tiếp nhận</span></div>
+                <div class="step active"><span class="icon"><i class="fa fa-archive" aria-hidden="true"></i></span> <span class="text">Đóng gói</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-car" aria-hidden="true"></i></span> <span class="text">Đang vận chuyển</span></div>
+                <div class="step"><span class="icon"><i class="fa fa-check-circle" aria-hidden="true"></i></span> <span class="text">Giao hàng thành công</span></div>
+              </div>
+            {% else %}
+              {% if order.status == 'Đang Vận Chuyển' %}
+                <div class="track">
+                  <div class="step active"><span class="icon"><i class="fa fa-check"></i></span><span class="text">Đặt hàng thành công</span></div>
+                  <div class="step active"><span class="icon"><i class="fa fa-user"></i></span><span class="text"> Hệ thống tiếp nhận</span></div>
+                  <div class="step active"><span class="icon"><i class="fa fa-archive" aria-hidden="true"></i></span> <span class="text">Đóng gói</span></div>
+                  <div class="step active"><span class="icon"><i class="fa fa-car" aria-hidden="true"></i></span> <span class="text">Đang vận chuyển</span></div>
+                  <div class="step"><span class="icon"><i class="fa fa-check-circle" aria-hidden="true"></i></span> <span class="text">Giao hàng thành công</span></div>
+                </div>
+              {% else %}
+                {% if order.status == 'Hoàn Thành' %}
+                  <div class="track">
+                    <div class="step active"><span class="icon"><i class="fa fa-check"></i></span><span class="text">Đặt hàng thành công</span></div>
+                    <div class="step active"><span class="icon"><i class="fa fa-user"></i></span><span class="text"> Hệ thống tiếp nhận</span></div>
+                    <div class="step active"><span class="icon"><i class="fa fa-archive" aria-hidden="true"></i></span> <span class="text">Đóng gói</span></div>
+                    <div class="step active"><span class="icon"><i class="fa fa-car" aria-hidden="true"></i></span> <span class="text">Đang vận chuyển</span></div>
+                    <div class="step active"><span class="icon"><i class="fa fa-check-circle" aria-hidden="true"></i></span> <span class="text">Giao hàng thành công</span></div>
+                  </div>
+                {% else %}
+                  {% if order.status == 'Đã Hủy' %}
+                  <div class="track">
+                    <div class="step active"><span class="icon"><i class="fa fa-window-close"></i></span><span class="text">Đơn hàng đã hủy</span></div>
+                  </div>
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endif%}
+          {% endif %}
+            <hr>
+            
+        </div>
+    </article>
+
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="cart-list">
+                    <table class="table jPvSur">
+                        <thead class="thead-primary">
+                          <tr class="text-center">
+                            <th>Mã đơn hàng</th>
+                            <!-- <th>&nbsp;</th> -->
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                          </tr>
+                        </thead>
+                        {% for sc in orderproductdetail %}
+                        <tbody>
+                          <tr class="text-center">
+                            <td>{{ sc.order.code }}</td>                            
+                            <!-- <td class="image-prod"><img class="img" src="{{baseURL}}/{{sc.product.image}}" alt=""></td> -->                            
+                            <td class="product-name">
+                              <a href="{% url 'product' sc.product.id %}"  style="color: blue; text-decoration: none;"><h3>{{ sc.product.name }}</h3></a>
+                                <p>Cung cấp bởi: <span style="color: rgb(27, 168, 255);">{{sc.product.product_ncc}}</span> </p>
+						        </td>
+                            </td>                            
+                            <td class="price">
+                              {{ sc.product.price }}đ
+                            </td>                            
+                            <td class="quantity">                                
+                              <div class="input-group mb-3">
+                                <input type="text" name="qty" style="text-align: center; border: none;" value="{{ sc.quantity }}" readonly="true" >                                
+                              </div>
+                          </td>                            
+                            <td class="total">{{ sc.amount }}đ</td>
+                          </tr><!-- END TR
+                        </tbody> -->
+                        {% endfor %}
+                        <tfoot>
+                          <tr>
+                            <td colspan="4">
+                              <span>Tạm tính:</span>
+                            </td>
+                            <td>{{total}}đ</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">
+                              <span>Khuyến mãi (nếu có):</span>
+                            </td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">
+                              <span style="color: red;">Tổng cộng:</span>
+                            </td>
+                            <td>{{total}}đ</td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                  </div>
+            </div>
+        </div>
+    
+    <a href="{% url 'ordertracking' %}" class="mt-3 btn btn-warningz" data-abc="true"> <i class="fa fa-chevron-left"></i> Quay lại</a>
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+{% endblock content %}

@@ -1,0 +1,133 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+
+<!-- <div class="hero-wrap hero-bread" style="background-image: url('{% static 'images/bg_1.jpg' %}');">
+	<div class="container">
+	  <div class="row no-gutters slider-text align-items-center justify-content-center">
+		<div class="col-md-9 ftco-animate text-center">
+		  <h1 class="mb-0 bread">Giỏ hàng</h1>
+		</div>
+	  </div>
+	</div>
+  </div>
+   -->
+<!---------------------------------------------------------->
+  
+  
+    <section class="ftco-section ftco-cart" style="background: #F4F4F4;">
+		<div class="text-content text-center">
+					<!-- <p><a href="/order/orderproduct" class="btn btn-primary py-3 px-4">Tiến hành mua hàng</a></p> -->
+					{% if total == 15000 %}
+					<h2 class="text-danger">GIỎ HÀNG</h2>
+					<div class="jFkAwY">
+						<div class="dExlGl">
+							<div class="empty">
+								<img class="empty__img" src="{% static 'images/gio.jpg' %}" alt="">
+								<p class="empty__note">Không có sản phẩm trong giỏ hàng của bạn!!</p>
+								<p><a href="{% url 'index' %}" class="btn btn-primary py-3 px-4">Tiếp tục mua hàng</a></p>
+							</div>
+						</div>
+					</div>
+					{% else %}
+						<h2 class="text-danger">GIỎ HÀNG</h2>
+		   </div>
+			<div class="container">
+				{% if messages %}
+						{% for message in messages %}
+							<div class = "alert alert-{{message.tags}}" role = "alert">
+								{{message}}
+							</div>
+						{% endfor %}
+					{% endif %}
+			<div class="row">
+    			<div class="col-md-12 ftco-animate">
+    				<div class="cart-list">
+	    				<table class="table">
+						    <thead class="thead-primary">
+								<tr class="text-center" style="background: red !important; color: white !important;">
+						        <th>&nbsp;</th>
+						        <th>&nbsp;</th>
+						        <th style="color: white !important;">Tên sản phẩm</th>
+						        <th style="color: white !important;">Giá</th>
+						        <th style="color: white !important;">Số lượng</th>
+						        <th style="color: white !important;">Thành tiền</th>
+						      </tr>
+							</thead>
+							{% for sc in shopcart %}
+						    <tbody>
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="/order/deleteformcart/{{ sc.id}}" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+						        
+						        <td class="image-prod"><img class="img" src="{{baseURL}}/{{sc.product.image}}" alt=""></td>
+						        
+						        <td class="product-name">
+						        	<a href="{% url 'product' sc.product.id %}"  style="color: blue; text-decoration: none;"><h3>{{ sc.product.name }}</h3></a>
+                                <p>Cung cấp bởi: <span style="color: rgb(27, 168, 255);">{{sc.product.product_ncc}}</span> </p>
+						        </td>
+						        
+						        <td class="price">{{ sc.price }}đ</td>
+						        <td class="quantity">
+									
+									<class class="cart_item_text">
+										{% if sc.quantity > 1 %}
+											<a href="{% url 'delete_single_item_from_cart' sc.product.id %}"><i class="fa fa-minus"></i></a>
+										{% else %}
+											<a><i class="fa fa-minus"></i></a>
+										{% endif %}			
+										{{sc.quantity}}
+										{% if sc.quantity < sc.product.quantities %}
+											<a href="{% url 'add_single_item_from_cart' sc.product.id %}"><i class="fa fa-plus"></i></a>
+										{% else %}
+											<a ><i class="fa fa-plus"></i></a>
+										{% endif %}								
+									</div>
+								</td>				        						        
+						        <td class="total">{{ sc.amount }}đ</td>
+						      </tr><!-- END TR-->
+							</tbody>
+							{% endfor %}
+						  </table>
+						</div>
+						  </div>
+					  </div>
+    		</div>
+    		<div class="row justify-content-end">
+    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+					<div class="cart-total mb-3">
+						<p class="d-flex">
+							<span>Thành tiền</span>
+							<span>{{ total1 }}đ</span>
+						</p>
+						<p class="d-flex">
+							<span>Phí giao hàng</span>
+							<span>15000</span>
+						</p>
+
+						<hr>
+						<p class="d-flex total-price">
+							<span>Tổng cộng</span>
+							<span>{{total}}đ</span>
+						</p>
+					</div>
+					<div>
+						<a href="{% url 'index'%}" style="border-radius: 2px !important; color: white;" class="btn bg-primary mr-3 py-3 px-4">Tiến tục mua hàng</a>
+						<a href="/order/orderproduct" style="border-radius: 2px !important; color: white;" class="btn bg-danger py-3 px-4">Tiến hành đặt hàng</a>
+					</div>
+					<p></p>
+					{% endif %}
+    			</div>
+    		</div>
+		</div>
+		</section>
+	
+
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  {% endblock content %}
+  

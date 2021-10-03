@@ -1,0 +1,26 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <div class="section-title">
+                        <h3>ĐẶT HÀNG THÀNH CÔNG</h3>
+                    </div>
+                    <hr>
+                    <h2> Chào {{user.last_name}}  {{user.first_name}}</h2>
+                    <hr>
+                    <h3>Đơn hàng bạn đã được đặt thành công</h3>
+                    <h3>Mã đơn hàng: {{ ordercode }}</h3>
+                    <h3>Chân thành cám ơn</h3>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+{% endblock content %}

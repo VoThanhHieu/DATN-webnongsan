@@ -1,0 +1,96 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+
+{% if messages %}
+        {% for message in messages %}
+            <div class = "alert alert-{{message.tags}}" role = "alert" style="list-style-type: none;">
+                {{message|safe}}
+            </div>
+        {% endfor %}
+        {% endif %}
+<section>
+    <div class="block remove-bottom bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="account-popup-area signup-popup-box static">
+                        <div class="account-popup mt-5">
+                            <h3> ĐĂNG KÍ </h3>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="cfield">
+                                    <input type="text" name="first_name" placeholder="Tên"/>
+                                    <i class="fa fa-user-circle"></i>
+                                </div>
+                                <div class="cfield">
+                                    <input type="text" name="last_name" placeholder="Họ" />
+                                    <i class="fa fa-user-md"></i>
+                                </div>
+                                <div class="cfield">
+                                    <input type="text" name="username" placeholder="Tên tài khoản" />
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div class="cfield">
+                                    <input type="password" name="password1" placeholder="Mật khẩu"/>
+                                    <i class="fa fa-unlock-alt"></i>
+                                </div>
+                                <div class="cfield">
+                                    <input type="password" name="password2" placeholder="Mật khẩu"/>
+                                    <i class="fa fa-unlock-alt"></i>
+                                </div>
+                                <div class="cfield">
+                                    <input  type="text" name="email" placeholder="Email" />
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <button class="aco-login" type="submit">Đăng kí</button>
+                            </form>
+                            <div class="extra-login">
+                                <span>hoặc</span>
+                                <div class="login-social">
+                                    <a class="fb-login" href="#" title=""><i class="fa fa-facebook"></i></a>
+                                    <a class="tw-login" href="#" title=""><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- SIGNUP POPUP -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        
+        <!-- <form method = "post"> -->
+            <!-- {% csrf_token %} -->
+            <!-- {% for field in form %}
+                <p>
+                    {{field.label_tag}} <br>
+                    {{field}}
+                    {% if field.help_text %}
+                        <small > {{field.help_text}} </small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <p >{{ error }}</p>
+                    {% endfor %}
+                </p>
+            {% endfor %}
+            <button type="submit"> Dang Ki</button> -->
+
+            <!-- <input type="text" name ="first_name" placeholder="First name"><br>
+            <input type="text" name ="last_name" placeholder="Last name"><br>
+            <input type="text" name ="username" placeholder="User name"><br>
+            <input type="text" name ="email" placeholder="Email"><br>
+            <input type="password" name ="password1" placeholder="Password"><br> 
+            <input type="password" name ="password2" placeholder="Confirm Password"><br>
+            <button type="submit">Dang Ki</button>
+        </form>        -->
+ <!-- <div>
+     {% for message in messages %}
+     <h3>{{message}}</h3>
+     {% endfor %}
+ </div> -->
+
+
+
+{% endblock content %}

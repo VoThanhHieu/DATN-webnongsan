@@ -1,0 +1,79 @@
+{% extends 'store/main_profile.html' %}
+{% load static %}
+{% static "images" as baseURL %}
+{% block content %}
+<div id="fullscreen_bg" class="fullscreen_bg"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-2">        
+                <div class="panel panel-default">        
+                    <div class="panel panel-primary">
+                        <br> 
+                        <form method="get">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2 ml-9 mt-1" style="max-width: 18%;">
+                                    <label>Tên sản phẩm</label>
+                                </div>
+                                <div class="col-sm-4" style="max-width: 22.33333%; margin-left: -50px;">
+                                    <input type="text"  name='name' class="form-control" style="font-size: 15px;" placeholder="Nhập tên sản phẩm">
+                                </div>
+                                
+                            </div>
+                    </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2 ml-9 mt-1" style="max-width: 18%;">
+                                    <label>Số lượng tồn</label>
+                                </div>
+                                <div class="col-sm-4" style="max-width: 22.33333%; margin-left: -50px;">
+                                    <div class="number-input md-number-input">
+                                        <input name="quantities__lte" class="quantity form-control" min="0" name="quantity" type="number">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 " style="margin-top: -38px">
+                                    <button type="submit" class="btn btn-primary btn-lg">Thống kê</button>                               
+                                </div>
+                            </div>
+                            <!-- {{ filter.form.as_p}}                            -->
+                            <br>
+                          </form>
+                    </div>            
+                    <div class="panel-body">
+                        <table class="table table-striped table-condensed">
+                            <thead class="thead-primary">
+                                <tr class="text-left" style="background: red !important; color: white !important;">                                
+                                    <th style="color: white !important;">Hình ảnh</th>
+                                    <th style="color: white !important;">Tên sản phẩm</th>
+                                    <th style="color: white !important;">Số lượng</th>
+                                    <th style="color: white !important;">Ngày nhập</th>
+                                </tr>
+                                </thead>
+                            <tbody> 
+                                {% for product in filter.qs %}             
+                                <tr class="text-center">
+                                    <td class="image-prod"><img class="img" src="{{baseURL}}/{{product.image}}" alt=""></td>
+                                    <td class="">{{ product.name}}</td>
+                                    <td class="totalprice">{{product.quantities}}</td>
+                                    <td>{{product.date_use|date:"d/m/yy"}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+        var sum = 0;
+    $('.totalprice').each(function(){
+        sum += parseFloat($(this).text()); 
+    });
+    document.getElementById("tong").innerHTML = sum;
+        
+</script>
+{% endblock content %}
